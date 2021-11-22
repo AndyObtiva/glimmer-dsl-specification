@@ -6,6 +6,10 @@ module Glimmer::Specification
       scenario 'Same-content strings are equal' do
         'string' == 'string'
       end
+      
+      scenario 'Different-content strings are not equal' do
+        'string1' != 'string2'
+      end
     }
   }
 end
