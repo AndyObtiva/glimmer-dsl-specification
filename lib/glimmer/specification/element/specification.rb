@@ -5,10 +5,6 @@ module Glimmer
         def post_add_content
           run
         end
-        
-        def run
-          scenarios.each(&:run)
-        end
       end
     end
   end

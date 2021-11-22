@@ -3,15 +3,12 @@ module Glimmer
     class Element
       class Scenario < Element
         def run
-          if @block.call
-            puts "FACT VERIFIED: #{to_s}"
+          @verified = @block.call
+          if @verified
+            puts "VERIFIED: #{to_s}"
           else
-            puts "FACT NOT VERIFIED: #{to_s}"
+            puts "NOT VERIFIED: #{to_s}"
           end
-        end
-        
-        def to_s
-          ancestors.reverse.map(&:title).join(' - ')
         end
       end
     end

@@ -33,6 +33,10 @@ module Glimmer
         @children ||= []
       end
       
+      def verified?
+        @verified
+      end
+      
       def scenarios
         children.map do |child|
           child.is_a?(Scenario) ? child : child.scenarios
@@ -63,6 +67,17 @@ module Glimmer
       # Enables re-opening content and adding new shapes
       def content(&block)
         Glimmer::DSL::Engine.add_content(self, Glimmer::DSL::Specification::ElementExpression.new, @keyword, &block)
+      end
+      
+      # runs children by default. subclasses may override.
+      def run
+        children.each(&:run)
+        @verified = children.all?(&:verified?)
+        puts "VERIFIED: #{to_s}" if @verified
+      end
+      
+      def to_s
+        ancestors.reverse.map(&:title).join(' - ')
       end
     end
   end
