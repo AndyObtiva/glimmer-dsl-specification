@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    glimmer-dsl-specification (0.0.1)
+      glimmer (~> 2.5.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -77,6 +83,7 @@ PLATFORMS
 
 DEPENDENCIES
   glimmer (~> 2.5.1)
+  glimmer-dsl-specification!
   juwelier (~> 2.1.0)
 
 BUNDLED WITH
