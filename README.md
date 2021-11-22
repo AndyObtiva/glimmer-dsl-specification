@@ -1,6 +1,6 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specifications
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specification
 ## Pure Ruby Declarative Use Case Specification and Automated Verification
-[![Gem Version](https://badge.fury.io/rb/glimmer-dsl-specifications.svg)](http://badge.fury.io/rb/glimmer-dsl-specifications)
+[![Gem Version](https://badge.fury.io/rb/glimmer-dsl-specification.svg)](http://badge.fury.io/rb/glimmer-dsl-specification)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Process
@@ -15,7 +15,7 @@
 
 ### Issues
 
-If you encounter [issues](https://github.com/AndyObtiva/glimmer-dsl-specifications/issues) that are not reported, discover missing features that are not mentioned in [TODO.md](TODO.md), or think up better ways to write declarative automated tests, you may submit an [issue](https://github.com/AndyObtiva/glimmer-dsl-libui/issues/new) or [pull request](https://github.com/AndyObtiva/glimmer-dsl-specifications/compare) on [GitHub](https://github.com). In the meantime, you may try an older version of the [Ruby gem](https://rubygems.org/gems/glimmer-dsl-specifications) in case it works better for you until your issues are resolved.
+If you encounter [issues](https://github.com/AndyObtiva/glimmer-dsl-specification/issues) that are not reported, discover missing features that are not mentioned in [TODO.md](TODO.md), or think up better ways to write declarative automated tests, you may submit an [issue](https://github.com/AndyObtiva/glimmer-dsl-libui/issues/new) or [pull request](https://github.com/AndyObtiva/glimmer-dsl-specification/compare) on [GitHub](https://github.com). In the meantime, you may try an older version of the [Ruby gem](https://rubygems.org/gems/glimmer-dsl-specification) in case it works better for you until your issues are resolved.
 
 ### Chat
 

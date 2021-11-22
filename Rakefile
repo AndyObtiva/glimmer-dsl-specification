@@ -13,11 +13,11 @@ require 'rake'
 require 'juwelier'
 Juwelier::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = "glimmer-dsl-specifications"
-  gem.homepage = "http://github.com/AndyObtiva/glimmer-dsl-specifications"
+  gem.name = "glimmer-dsl-specification"
+  gem.homepage = "http://github.com/AndyObtiva/glimmer-dsl-specification"
   gem.license = "MIT"
-  gem.summary = %Q{Glimmer DSL for Specifications}
-  gem.description = %Q{Glimmer DSL for Specifications - An automated unit-test/integration-test DSL (Domain Specific Language) that enables specifying software requirements in English-like Ruby syntax and then verifying them.}
+  gem.summary = %Q{Glimmer DSL for Specification}
+  gem.description = %Q{Glimmer DSL for Specification - Pure Ruby Declarative Use Case Specification and Automated Verification}
   gem.email = "andy.am@gmail.com"
   gem.authors = ["Andy Maleh"]
 
@@ -44,7 +44,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "glimmer-dsl-specifications #{version}"
+  rdoc.title = "glimmer-dsl-specification #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
