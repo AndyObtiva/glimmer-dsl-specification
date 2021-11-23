@@ -22,6 +22,7 @@
 $LOAD_PATH.unshift(File.expand_path('.', __dir__))
 
 require 'facets/string/camelcase'
+require 'facets/string/underscore'
 require 'puts_debuggerer'
 require 'colours'
 require 'glimmer'

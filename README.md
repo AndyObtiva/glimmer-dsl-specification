@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specification 0.0.3
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specification 0.0.4
 ## Pure Ruby Declarative Use Case Specification and Automated Verification
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-specification.svg)](http://badge.fury.io/rb/glimmer-dsl-specification)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -114,7 +114,71 @@ VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts
 VERIFIED: Glimmer DSL for Specification
 ```
 
-Failure output when fudging some code (colored in actual usage):
+Suppose we fudge some code in `Verify Multiple Facts` use case:
+
+```ruby
+require 'glimmer-dsl-specification'
+
+class Person
+  attr_reader :first_name, :last_name
+  
+  def initialize(first_name: , last_name: )
+    @first_name = first_name
+    @last_name = last_name
+  end
+  
+  def name
+    "#{first_name} #{last_name}"
+  end
+end
+
+module Glimmer::Specification
+  specification('Glimmer DSL for Specification') {
+    use_case('Compare Two Objects for Equality') {
+      scenario 'Same-content strings are equal' do
+        'string' == 'string'
+      end
+      
+      scenario 'Different-content strings are not equal' do
+        'string1' != 'string2'
+      end
+
+      scenario 'Same-number integers are equal' do
+        1 == 1
+      end
+
+      scenario 'Different-number integers are not equal' do
+        1 != 2
+      end
+    }
+    
+    use_case('Verify Multiple Facts') {
+      scenario 'person name consists of first name and last name' do
+        person = Person.new(first_name: 'Bob', last_name: 'Winfrey')
+
+        fact { person.first_name == 'Bob' }
+        fact { person.last_name == 'Winfrey' }
+        fact { person.last_name == 'aWinfrey' }
+        fact { person.last_name != 'Winfrey' }
+        fact { person.last_name.empty? }
+        fact { person.last_name.include?('fda') }
+        fact { person.last_name.nil? }
+        fact { [person.last_name] == ['aWinfrey'] }
+        fact { [person.last_name] != ['Winfrey'] }
+        fact { [person.last_name].empty? }
+        fact { [person.last_name].include?('ha') }
+        fact { [person.last_name].nil? }
+        fact { person == nil }
+        fact { person.nil? }
+        fact { person != person }
+        person.name == 'Bob Winfrey'
+      end
+    }
+  }
+end
+```
+
+Failure output (colored in actual usage):
 
 ```
 VERIFIED: Glimmer DSL for Specification - Compare Two Objects for Equality - Same-content strings are equal
@@ -123,10 +187,33 @@ VERIFIED: Glimmer DSL for Specification - Compare Two Objects for Equality - Sam
 VERIFIED: Glimmer DSL for Specification - Compare Two Objects for Equality - Different-number integers are not equal
 VERIFIED: Glimmer DSL for Specification - Compare Two Objects for Equality
 VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.first_name == 'Bob' }
-FAILED: 'Winfrey' == 'Baxter'
-NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name == 'Baxter' }
-FAILED: 'Winfrey' != 'Winfrey'
+VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name == 'Winfrey' }
+FAILED: "Winfrey" == "aWinfrey"
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name == 'aWinfrey' }
+FAILED: "Winfrey" != "Winfrey"
 NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name != 'Winfrey' }
+FAILED: "Winfrey".empty?
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name.empty? }
+FAILED: "Winfrey".include?("fda")
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name.include?('fda') }
+FAILED: "Winfrey".nil?
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name.nil? }
+FAILED: ["Winfrey"] == ["aWinfrey"]
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { [person.last_name] == ['aWinfrey'] }
+FAILED: ["Winfrey"] != ["Winfrey"]
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { [person.last_name] != ['Winfrey'] }
+FAILED: ["Winfrey"].empty?
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { [person.last_name].empty? }
+FAILED: ["Winfrey"].include?("ha")
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { [person.last_name].include?('ha') }
+FAILED: ["Winfrey"].nil?
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { [person.last_name].nil? }
+FAILED: #<Person:0x00007f832a93b778 @first_name="Bob", @last_name="Winfrey"> == nil
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person == nil }
+FAILED: #<Person:0x00007f832a93b778 @first_name="Bob", @last_name="Winfrey">.nil?
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.nil? }
+FAILED: #<Person:0x00007f832a93b778 @first_name="Bob", @last_name="Winfrey"> != #<Person:0x00007f832a93b778 @first_name="Bob", @last_name="Winfrey">
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person != person }
 NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name
 NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts
 NOT VERIFIED: Glimmer DSL for Specification
@@ -137,7 +224,7 @@ NOT VERIFIED: Glimmer DSL for Specification
 1 - Include in `Gemfile` (`:development` or `:test` group):
 
 ```ruby
-gem 'glimmer-dsl-specification', '~> 0.0.3'
+gem 'glimmer-dsl-specification', '~> 0.0.4'
 ```
 
 And, run:
@@ -224,7 +311,9 @@ Specifications do not care about what specific "classes" or "methods" are execut
 
 `fact {}` states a fact embodied by a boolean result for the passed block of code.
 
-Upon failure of a `fact` with `String` `==`/`!=`/`#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
+- Upon failure of a `fact` with `String` `==`/`!=`/`#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
+- Upon failure of a `fact` with `Array` `==`/`!=`/`#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
+- Upon failure of a `fact` with `Object` `==`/`!=` verification methods, the library will automatically print the values of the involved objects.
 
 ## Process
 

@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.4
+
+- On `fact` failure of `Object` `==`/`!=`, display the involved objects
+- On `fact` failure of `Array` `==`/`!=`/`empty?`/`include?`, display the involved objects
+
 ## 0.0.3
 
 - On `fact` failure of `String` `#empty?` and `#include?`, display the involved objects

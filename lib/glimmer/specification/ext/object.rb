@@ -19,9 +19,8 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-class String
+class Object
   Glimmer::Specification::Ext.log_failure_of_method(self, '==', 'double_equal_without_glimmer') { |this, method_name, args| "#{this.inspect} == #{args.first.inspect}" }
   Glimmer::Specification::Ext.log_failure_of_method(self, '!=', 'double_non_equal_without_glimmer') { |this, method_name, args| "#{this.inspect} != #{args.first.inspect}" }
-  Glimmer::Specification::Ext.log_failure_of_method(self, 'empty?')
-  Glimmer::Specification::Ext.log_failure_of_method(self, 'include?')
+  Glimmer::Specification::Ext.log_failure_of_method(self, 'nil?')
 end

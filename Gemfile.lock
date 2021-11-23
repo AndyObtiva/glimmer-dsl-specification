@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    glimmer-dsl-specification (0.0.3)
+    glimmer-dsl-specification (0.0.4)
       colours (~> 0.6.1)
       glimmer (~> 2.5.1)
       puts_debuggerer (~> 0.13.1)

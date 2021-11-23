@@ -19,4 +19,39 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+using ArrayIncludeMethods
+
+module Glimmer
+  module Specification
+    module Ext
+      class << self
+        attr_accessor :log_failure_of_method_in_progress
+        alias log_failure_of_method_in_progress? log_failure_of_method_in_progress
+        
+        def log_failure_of_method(klass, method_name, method_alias = nil, &output_formatter)
+          klass.class_eval do
+            method_alias ||= "without_glimmer_#{method_name}"
+            method_alias = "#{name.split('::').last.underscore}_#{method_alias}"
+            alias_method method_alias, method_name
+            define_method(method_name) do |*args|
+              logging = false
+              logging = Ext.log_failure_of_method_in_progress = true if !frozen? && !Ext.log_failure_of_method_in_progress?
+              send(method_alias, *args).tap do |result|
+                unless frozen?
+                  if logging
+                    output = output_formatter&.call(self, method_name, args)
+                    output ||= "#{self.inspect}.#{method_name}#{"(#{args.map(&:inspect).join(',')})" unless args.array_without_glimmer_empty?}"
+                    puts Colours::RED + "FAILED: #{output}" if Glimmer::Specification::Element::Fact.fact_block_in_progress && !result
+                    Ext.log_failure_of_method_in_progress = false
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
+
 Dir[File.expand_path('./ext/*.rb', __dir__)].each {|f| require f}
