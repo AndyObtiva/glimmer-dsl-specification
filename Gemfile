@@ -6,5 +6,6 @@ gem 'colours', '~> 0.6.1'
 
 group :development do
   gem 'juwelier', '~> 2.1.0'
+  gem 'rake-tui', '> 0'
   gem 'glimmer-dsl-specification', path: '.'
 end

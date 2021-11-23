@@ -20,6 +20,7 @@ Juwelier::Tasks.new do |gem|
   gem.description = %Q{Glimmer DSL for Specification - Pure Ruby Declarative Use Case Specification and Automated Verification}
   gem.email = "andy.am@gmail.com"
   gem.authors = ["Andy Maleh"]
+  gem.files = ['README.md', 'TODO.md', 'CHANGELOG.md', 'VERSION', 'LICENSE.txt', 'glimmer-dsl-specification.gemspec', 'lib/**/*']
 
   # dependencies defined in Gemfile
 end
