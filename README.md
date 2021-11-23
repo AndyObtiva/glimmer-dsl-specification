@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specification 0.0.2
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specification 0.0.3
 ## Pure Ruby Declarative Use Case Specification and Automated Verification
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-specification.svg)](http://badge.fury.io/rb/glimmer-dsl-specification)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -137,7 +137,7 @@ NOT VERIFIED: Glimmer DSL for Specification
 1 - Include in `Gemfile` (`:development` or `:test` group):
 
 ```ruby
-gem 'glimmer-dsl-specification', '~> 0.0.2'
+gem 'glimmer-dsl-specification', '~> 0.0.3'
 ```
 
 And, run:

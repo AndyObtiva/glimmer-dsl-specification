@@ -30,6 +30,8 @@ require 'glimmer/specification/rake_tasks'
 
 task :default => :verify
 
+Rake::Task['build'].enhance([:verify])
+
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""

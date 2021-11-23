@@ -29,10 +29,10 @@ class String
   
   alias double_non_equal_sign_without_glimmer !=
   def !=(other)
-    @non_equal_in_progress = true
+    @non_equal_in_progress = true unless frozen?
     double_non_equal_sign_without_glimmer(other).tap do |result|
       puts Colours::RED + "FAILED: '#{self}' != '#{other}'" if Glimmer::Specification::Element::Fact.fact_block_in_progress && !result
-      @non_equal_in_progress = false
+      @non_equal_in_progress = false unless frozen?
     end
   end
   
