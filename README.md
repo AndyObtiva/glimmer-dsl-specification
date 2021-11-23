@@ -5,7 +5,7 @@
 
 Despite Ruby's highly expressive nature, all testing toolkits written in Ruby are either imperative (e.g. using `assert` or `expect`), thus losing expressiveness and focusing software engineers on the wrong thing, or mix non-Ruby code with Ruby (e.g. `cucumber` & `gherkin`), thus missing out on the simplicity of Ruby.
 
-Glimmer DSL for Specification aims to provide a simple minimalistic and noun-based declarative syntax. No more verbs! It is time to think declaratively not imperatively!
+[Glimmer](https://github.com/AndyObtiva/glimmer) DSL for Specification aims to provide a simple minimalistic and noun-based declarative syntax. No more verbs! It is time to think declaratively not imperatively!
 
 As such, software engineers focus on [Requirements Specification](https://en.wikipedia.org/wiki/Software_requirements_specification) at the [Use Case](https://en.wikipedia.org/wiki/Use_case) level whereby each use case is composed of multiple scenarios. No need to specify scenario steps. The code is the steps!!!
 
@@ -34,6 +34,19 @@ end
 ```
 
 That states a few extra facts in addition to the last statement in the scenario denoting the final verification.
+
+Of course, if a verification does not complete, then the onus is on the software engineer to print out the right variables to fix (the included [puts_debuggerer](https://github.com/AndyObtiva/puts_debuggerer/) makes such a task much more convenient)
+
+Note that this library is very new and experimental, so it might change course significantly. Also, despite the bold ambitious statements, there might be obvious blind spots that your feedback would help shine light upon to improve the library. As such, ideas and suggestions are greatly welcome.
+
+Other [Glimmer](https://rubygems.org/gems/glimmer) DSL gems you might be interested in:
+- [glimmer-dsl-swt](https://github.com/AndyObtiva/glimmer-dsl-swt): Glimmer DSL for SWT (JRuby Desktop Development GUI Framework)
+- [glimmer-dsl-opal](https://github.com/AndyObtiva/glimmer-dsl-opal): Glimmer DSL for Opal (Pure Ruby Web GUI and Auto-Webifier of Desktop Apps)
+- [glimmer-dsl-tk](https://github.com/AndyObtiva/glimmer-dsl-tk): Glimmer DSL for Tk (MRI Ruby Desktop Development GUI Library)
+- [glimmer-dsl-libui](https://github.com/AndyObtiva/glimmer-dsl-libui): Glimmer DSL for LibUI (Prerequisite-Free Ruby Desktop Development GUI Library)
+- [glimmer-dsl-gtk](https://github.com/AndyObtiva/glimmer-dsl-gtk): Glimmer DSL for GTK (Ruby-GNOME Desktop Development GUI Library)
+- [glimmer-dsl-xml](https://github.com/AndyObtiva/glimmer-dsl-xml): Glimmer DSL for XML (& HTML)
+- [glimmer-dsl-css](https://github.com/AndyObtiva/glimmer-dsl-css): Glimmer DSL for CSS
 
 ## Full Example
 
@@ -120,7 +133,7 @@ NOT VERIFIED: Glimmer DSL for Specification
 
 ## Usage
 
-1 - Include in `Gemfile`
+1 - Include in `Gemfile` (`:development` or `:test` group):
 
 ```ruby
 gem 'glimmer-dsl-specification', '~> 0.0.1'
@@ -182,13 +195,13 @@ rake
 
 The Domain Specific Language consists of the following keywords simply nested under `Glimmer::Specification` module (to avoid namespace pollution).
 
-This library highly emphasizes declarative specification, so it avoids "test" jargon including "pass" or "fail" and unit-test jargon including "class", "method", "attribute", or "assert" as that is not the ultimate aim of the library, yet specifying application requirements.
+This library highly emphasizes declarative specification, so it avoids unit-test jargon including "class", "method", "attribute", or "assert" as that is not the ultimate aim of the library, yet specifying application requirements.
 
 Specifications do not care about what specific "classes" or "methods" are executed. They only care about meeting the verification criteria.
 
 ### specification
 
-(nested directly under `Glimmer::Specification` module.)
+(nested directly under `Glimmer::Specification` module or under another `specification`.)
 
 `specification(title)` is the top-level keyword denoting a requirement specification.
 
@@ -258,3 +271,7 @@ If you need live help, try to [![Join the chat at https://gitter.im/AndyObtiva/g
 
 Copyright (c) 2021 Andy Maleh. See
 [LICENSE.txt](LICENSE.txt) for further details.
+
+--
+
+[<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=40 />](https://github.com/AndyObtiva/glimmer) Built for [Glimmer](https://github.com/AndyObtiva/glimmer) (DSL Framework).
