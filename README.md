@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-specification.svg)](http://badge.fury.io/rb/glimmer-dsl-specification)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Despite Ruby's highly expressive nature, all testing toolkits written in Ruby are either imperative (e.g. using `assert` or `expect`), thus losing expressiveness and focusing software engineers on the wrong thing, or mix non-Ruby code with Ruby (e.g. `cucumber` & `gherkin`), thus missing out on the simplicity of Ruby.
+Despite Ruby's highly expressive nature, most testing toolkits written in Ruby are either imperative (e.g. using `assert` or `expect`), thus losing expressiveness and focusing software engineers on the wrong thing, or mix non-Ruby code with Ruby (e.g. `cucumber` & `gherkin`), thus missing out on the simplicity of Ruby.
 
 [Glimmer](https://github.com/AndyObtiva/glimmer) DSL for Specification aims to provide a simple minimalistic and noun-based declarative syntax. No more verbs! It is time to think declaratively not imperatively!
 
@@ -237,6 +237,8 @@ NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts
 NOT VERIFIED: Glimmer DSL for Specification
 ```
 
+Note: Currently, you only get `FAILED` printout under `fact {}` blocks, but not as the last statement of `scenario`. This should change in the forseeable future. Favor declaring criteria in `fact {}` blocks for now.
+ 
 ## Usage
 
 1 - Include in `Gemfile` (`:development` or `:test` group):
@@ -307,7 +309,7 @@ Specifications do not care about what specific "classes" or "methods" are execut
 
 ### specification
 
-(nested directly under `Glimmer::Specification` module or under another `specification`)
+(nested directly under `Glimmer::Specification` module)
 
 `specification(title)` is the top-level keyword denoting a requirement specification.
 
