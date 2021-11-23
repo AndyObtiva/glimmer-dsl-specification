@@ -224,7 +224,7 @@ Specifications do not care about what specific "classes" or "methods" are execut
 
 `fact {}` states a fact embodied by a boolean result for the passed block of code.
 
-Upon failure of a `fact` with a `String` equality/inequality comparison, the library will automatically print the values of the two compared `String` objects.
+Upon failure of a `fact` with `String` `==`/`!=`/`#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
 
 ## Process
 

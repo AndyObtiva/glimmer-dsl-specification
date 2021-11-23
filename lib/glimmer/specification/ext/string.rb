@@ -35,4 +35,18 @@ class String
       @non_equal_in_progress = false
     end
   end
+  
+  alias empty_without_glimmer? empty?
+  def empty?
+    empty_without_glimmer?.tap do |result|
+      puts Colours::RED + "FAILED: '#{self}'.empty?" if Glimmer::Specification::Element::Fact.fact_block_in_progress && !result
+    end
+  end
+  
+  alias include_without_glimmer? include?
+  def include?(other)
+    include_without_glimmer?(other).tap do |result|
+      puts Colours::RED + "FAILED: '#{self}'.include?('#{other}')" if Glimmer::Specification::Element::Fact.fact_block_in_progress && !result
+    end
+  end
 end
