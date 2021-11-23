@@ -19,32 +19,20 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-module Glimmer
-  module Specification
-    class Element
-      class Scenario < Element
-        def initialize(parent, keyword, *args, &block)
-          @executable = true
-          super
-        end
-        
-        def fact(&block)
-          new_fact = Fact.new(self, 'fact', [], &block)
-          new_fact.run
-          @verified &&= new_fact.verified?
-        end
-        
-        def run
-          @verified = true
-          own_block_verified = Glimmer::DSL::Engine.add_content(self, Glimmer::DSL::Specification::ElementExpression.new, @keyword, &@block)
-          @verified &&= own_block_verified if own_block_verified.is_a?(TrueClass) || own_block_verified.is_a?(FalseClass)
-          if @verified
-            puts Colours::GREEN + "VERIFIED: #{to_s}"
-          else
-            puts Colours::RED + "NOT VERIFIED: #{to_s}"
-          end
-        end
-      end
+class String
+  alias double_equal_sign_without_glimmer ==
+  def ==(other)
+    double_equal_sign_without_glimmer(other).tap do |result|
+      puts Colours::RED + "FAILED: '#{self}' == '#{other}'" if Glimmer::Specification::Element::Fact.fact_block_in_progress && !result && !@non_equal_in_progress
+    end
+  end
+  
+  alias double_non_equal_sign_without_glimmer !=
+  def !=(other)
+    @non_equal_in_progress = true
+    double_non_equal_sign_without_glimmer(other).tap do |result|
+      puts Colours::RED + "FAILED: '#{self}' != '#{other}'" if Glimmer::Specification::Element::Fact.fact_block_in_progress && !result
+      @non_equal_in_progress = false
     end
   end
 end

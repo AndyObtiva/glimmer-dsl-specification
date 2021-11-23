@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specification 0.0.1
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specification 0.0.2
 ## Pure Ruby Declarative Use Case Specification and Automated Verification
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-specification.svg)](http://badge.fury.io/rb/glimmer-dsl-specification)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -33,9 +33,7 @@ scenario 'person name consists of first name and last name' do
 end
 ```
 
-That states a few extra facts in addition to the last statement in the scenario denoting the final verification.
-
-Of course, if a verification does not complete, then the onus is on the software engineer to print out the right variables to fix (the included [puts_debuggerer](https://github.com/AndyObtiva/puts_debuggerer/) makes such a task much more convenient)
+That states a few extra facts in addition to the last statement in the scenario denoting the final verification. Software engineers will not have to write awkward verification code they hate anymore (e.g. `assert` or `expect`) as even software verification code is written with basic Ruby.
 
 Note that this library is very new and experimental, so it might change course significantly. Also, despite the bold ambitious statements, there might be obvious blind spots that your feedback would help shine light upon to improve the library. As such, ideas and suggestions are greatly welcome.
 
@@ -125,7 +123,10 @@ VERIFIED: Glimmer DSL for Specification - Compare Two Objects for Equality - Sam
 VERIFIED: Glimmer DSL for Specification - Compare Two Objects for Equality - Different-number integers are not equal
 VERIFIED: Glimmer DSL for Specification - Compare Two Objects for Equality
 VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.first_name == 'Bob' }
-VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name == 'Winfrey' }
+FAILED: 'Winfrey' == 'Baxter'
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name == 'Baxter' }
+FAILED: 'Winfrey' != 'Winfrey'
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name != 'Winfrey' }
 NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name
 NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts
 NOT VERIFIED: Glimmer DSL for Specification
@@ -136,7 +137,7 @@ NOT VERIFIED: Glimmer DSL for Specification
 1 - Include in `Gemfile` (`:development` or `:test` group):
 
 ```ruby
-gem 'glimmer-dsl-specification', '~> 0.0.1'
+gem 'glimmer-dsl-specification', '~> 0.0.2'
 ```
 
 And, run:
@@ -222,6 +223,8 @@ Specifications do not care about what specific "classes" or "methods" are execut
 (nested under `scenario`)
 
 `fact {}` states a fact embodied by a boolean result for the passed block of code.
+
+Upon failure of a `fact` with a `String` equality/inequality comparison, the library will automatically print the values of the two compared `String` objects.
 
 ## Process
 
