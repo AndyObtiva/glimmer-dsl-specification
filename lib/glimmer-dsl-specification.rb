@@ -23,6 +23,7 @@ $LOAD_PATH.unshift(File.expand_path('.', __dir__))
 
 require 'facets/string/camelcase'
 require 'puts_debuggerer'
+require 'colours'
 require 'glimmer'
 require 'glimmer/dsl/specification/dsl'
 require 'glimmer/specification'

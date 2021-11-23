@@ -83,7 +83,11 @@ module Glimmer
       def run
         children.each(&:run)
         @verified = children.all?(&:verified?)
-        puts "VERIFIED: #{to_s}" if @verified
+        if @verified
+          puts Colours::GREEN + "VERIFIED: #{to_s}"
+        else
+          puts Colours::RED + "NOT VERIFIED: #{to_s}"
+        end
       end
       
       def to_s

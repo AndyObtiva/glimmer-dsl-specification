@@ -18,9 +18,9 @@ module Glimmer
           own_block_verified = Glimmer::DSL::Engine.add_content(self, Glimmer::DSL::Specification::ElementExpression.new, @keyword, &@block)
           @verified &&= own_block_verified if own_block_verified.is_a?(TrueClass) || own_block_verified.is_a?(FalseClass)
           if @verified
-            puts "VERIFIED: #{to_s}"
+            puts Colours::GREEN + "VERIFIED: #{to_s}"
           else
-            puts "NOT VERIFIED: #{to_s}"
+            puts Colours::RED + "NOT VERIFIED: #{to_s}"
           end
         end
       end

@@ -12,9 +12,9 @@ module Glimmer
         def run
           @verified = @block.call
           if @verified
-            puts "VERIFIED: #{to_s}"
+            puts Colours::GREEN + "VERIFIED: #{to_s}"
           else
-            puts "NOT VERIFIED: #{to_s}"
+            puts Colours::RED + "NOT VERIFIED: #{to_s}"
           end
         end
       end

@@ -12,6 +12,7 @@ GEM
     array_include_methods (1.4.0)
     awesome_print (1.9.2)
     builder (3.2.4)
+    colours (0.6.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     facets (3.1.0)
@@ -85,6 +86,7 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  colours (~> 0.6.1)
   glimmer (~> 2.5.1)
   glimmer-dsl-specification!
   juwelier (~> 2.1.0)
