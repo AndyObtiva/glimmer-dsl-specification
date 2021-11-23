@@ -35,15 +35,13 @@ module Glimmer
             alias_method method_alias, method_name
             define_method(method_name) do |*args|
               logging = false
-              logging = Ext.log_failure_of_method_in_progress = true if !frozen? && !Ext.log_failure_of_method_in_progress?
+              logging = Ext.log_failure_of_method_in_progress = true if !Ext.log_failure_of_method_in_progress?
               send(method_alias, *args).tap do |result|
-                unless frozen?
-                  if logging
-                    output = output_formatter&.call(self, method_name, args)
-                    output ||= "#{self.inspect}.#{method_name}#{"(#{args.map(&:inspect).join(',')})" unless args.array_without_glimmer_empty?}"
-                    puts Colours::RED + "FAILED: #{output}" if Glimmer::Specification::Element::Fact.fact_block_in_progress && !result
-                    Ext.log_failure_of_method_in_progress = false
-                  end
+                if logging
+                  output = output_formatter&.call(self, method_name, args)
+                  output ||= "#{self.inspect}.#{method_name}#{"(#{args.map(&:inspect).join(',')})" unless args.array_without_glimmer_empty?}"
+                  puts Colours::RED + "FAILED: #{output}" if Glimmer::Specification::Element::Fact.fact_block_in_progress && !result
+                  Ext.log_failure_of_method_in_progress = false
                 end
               end
             end

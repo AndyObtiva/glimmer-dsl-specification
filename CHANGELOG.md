@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.5
+
+- On `fact` failure of `Integer` `==`/`!=`/`>`/`>=`/`<`/`<=`, display the involved objects
+- Support `fact` failure printout for frozen `Object`s
+
 ## 0.0.4
 
 - On `fact` failure of `Object` `==`/`!=`, display the involved objects

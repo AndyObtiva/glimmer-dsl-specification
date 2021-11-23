@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specification 0.0.4
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for Specification 0.0.5
 ## Pure Ruby Declarative Use Case Specification and Automated Verification
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-specification.svg)](http://badge.fury.io/rb/glimmer-dsl-specification)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -171,6 +171,12 @@ module Glimmer::Specification
         fact { person == nil }
         fact { person.nil? }
         fact { person != person }
+        fact { person.last_name.size == 3 }
+        fact { person.last_name.size > 13 }
+        fact { person.last_name.size >= 13 }
+        fact { person.last_name.size < 1 }
+        fact { person.last_name.size <= 1 }
+        fact { person.last_name.size != 7 }
         person.name == 'Bob Winfrey'
       end
     }
@@ -214,6 +220,18 @@ FAILED: #<Person:0x00007f832a93b778 @first_name="Bob", @last_name="Winfrey">.nil
 NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.nil? }
 FAILED: #<Person:0x00007f832a93b778 @first_name="Bob", @last_name="Winfrey"> != #<Person:0x00007f832a93b778 @first_name="Bob", @last_name="Winfrey">
 NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person != person }
+FAILED: 7 == 3
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name.size == 3 }
+FAILED: 7 > 13
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name.size > 13 }
+FAILED: 7 >= 13
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name.size >= 13 }
+FAILED: 7 < 1
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name.size < 1 }
+FAILED: 7 <= 1
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name.size <= 1 }
+FAILED: 7 != 7
+NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name - fact { person.last_name.size != 7 }
 NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts - person name consists of first name and last name
 NOT VERIFIED: Glimmer DSL for Specification - Verify Multiple Facts
 NOT VERIFIED: Glimmer DSL for Specification
@@ -224,7 +242,7 @@ NOT VERIFIED: Glimmer DSL for Specification
 1 - Include in `Gemfile` (`:development` or `:test` group):
 
 ```ruby
-gem 'glimmer-dsl-specification', '~> 0.0.4'
+gem 'glimmer-dsl-specification', '~> 0.0.5'
 ```
 
 And, run:
@@ -314,6 +332,7 @@ Specifications do not care about what specific "classes" or "methods" are execut
 - Upon failure of a `fact` with `Object` `nil?`, `==`/`!=` verification methods, the library will automatically print the values of the involved objects.
 - Upon failure of a `fact` with `String` `#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
 - Upon failure of a `fact` with `Array` `#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
+- Upon failure of a `fact` with `Integer` `>`/`>=`/`<`/`<=` verification methods, the library will automatically print the values of the involved objects.
 
 ## Process
 

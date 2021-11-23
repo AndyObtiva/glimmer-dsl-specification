@@ -19,8 +19,10 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-class String
+class Integer < Numeric
   Glimmer::Specification::Ext.log_failure_of_method(self, '==', 'double_equal_without_glimmer') { |this, method_name, args| "#{this.inspect} == #{args.first.inspect}" }
-  Glimmer::Specification::Ext.log_failure_of_method(self, 'empty?')
-  Glimmer::Specification::Ext.log_failure_of_method(self, 'include?')
+  Glimmer::Specification::Ext.log_failure_of_method(self, '>', 'greater_without_glimmer') { |this, method_name, args| "#{this.inspect} > #{args.first.inspect}" }
+  Glimmer::Specification::Ext.log_failure_of_method(self, '<', 'less_without_glimmer') { |this, method_name, args| "#{this.inspect} < #{args.first.inspect}" }
+  Glimmer::Specification::Ext.log_failure_of_method(self, '>=', 'greater_or_equal_without_glimmer') { |this, method_name, args| "#{this.inspect} >= #{args.first.inspect}" }
+  Glimmer::Specification::Ext.log_failure_of_method(self, '<=', 'less_or_equal_without_glimmer') { |this, method_name, args| "#{this.inspect} <= #{args.first.inspect}" }
 end

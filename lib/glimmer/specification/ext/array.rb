@@ -21,7 +21,6 @@
 
 class Array
   Glimmer::Specification::Ext.log_failure_of_method(self, '==', 'double_equal_without_glimmer') { |this, method_name, args| "#{this.inspect} == #{args.first.inspect}" }
-  Glimmer::Specification::Ext.log_failure_of_method(self, '!=', 'double_non_equal_without_glimmer') { |this, method_name, args| "#{this.inspect} != #{args.first.inspect}" }
   Glimmer::Specification::Ext.log_failure_of_method(self, 'empty?')
   Glimmer::Specification::Ext.log_failure_of_method(self, 'include?')
 end
