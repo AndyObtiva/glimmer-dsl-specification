@@ -33,11 +33,11 @@ scenario 'person name consists of first name and last name' do
 end
 ```
 
-That states a few extra facts in addition to the last statement in the scenario denoting the final verification. Software engineers will not have to write awkward verification code they hate anymore (e.g. `assert` or `expect`) as even software verification code is written with basic Ruby.
+That states a few extra facts in addition to the last statement in the scenario denoting the final verification. Software engineers will not have to write awkward verification code they hate anymore (e.g. `assert` or `expect`) as plain old Ruby comparison code gets the job done in [Glimmer DSL for Specification](https://rubygems.org/gems/glimmer-dsl-specification)!
 
 Note that this library is very new and experimental, so it might change course significantly. Also, despite the bold ambitious statements, there might be obvious blind spots that your feedback would help shine light upon to improve the library. As such, ideas and suggestions are greatly welcome.
 
-Other [Glimmer](https://rubygems.org/gems/glimmer) DSL gems you might be interested in:
+Other [Glimmer](https://github.com/AndyObtiva/glimmer) DSL gems you might be interested in:
 - [glimmer-dsl-swt](https://github.com/AndyObtiva/glimmer-dsl-swt): Glimmer DSL for SWT (JRuby Desktop Development GUI Framework)
 - [glimmer-dsl-opal](https://github.com/AndyObtiva/glimmer-dsl-opal): Glimmer DSL for Opal (Pure Ruby Web GUI and Auto-Webifier of Desktop Apps)
 - [glimmer-dsl-tk](https://github.com/AndyObtiva/glimmer-dsl-tk): Glimmer DSL for Tk (MRI Ruby Desktop Development GUI Library)
@@ -289,7 +289,7 @@ Specifications do not care about what specific "classes" or "methods" are execut
 
 ### specification
 
-(nested directly under `Glimmer::Specification` module or under another `specification`.)
+(nested directly under `Glimmer::Specification` module or under another `specification`)
 
 `specification(title)` is the top-level keyword denoting a requirement specification.
 
@@ -311,9 +311,9 @@ Specifications do not care about what specific "classes" or "methods" are execut
 
 `fact {}` states a fact embodied by a boolean result for the passed block of code.
 
-- Upon failure of a `fact` with `String` `==`/`!=`/`#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
-- Upon failure of a `fact` with `Array` `==`/`!=`/`#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
-- Upon failure of a `fact` with `Object` `==`/`!=` verification methods, the library will automatically print the values of the involved objects.
+- Upon failure of a `fact` with `Object` `nil?`, `==`/`!=` verification methods, the library will automatically print the values of the involved objects.
+- Upon failure of a `fact` with `String` `#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
+- Upon failure of a `fact` with `Array` `#empty?`/`#include?` verification methods, the library will automatically print the values of the involved objects.
 
 ## Process
 
