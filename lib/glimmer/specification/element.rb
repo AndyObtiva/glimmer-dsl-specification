@@ -37,6 +37,15 @@ module Glimmer
         @verified
       end
       
+      def content_added?
+        @content_added
+      end
+      
+      # subclasses may override (e.g. Scenario)
+      def executable?
+        !!@executable
+      end
+      
       def scenarios
         children.map do |child|
           child.is_a?(Scenario) ? child : child.scenarios
@@ -62,6 +71,7 @@ module Glimmer
       
       def post_add_content
         # No Op (subclasses may override to do something at the closing of the element)
+        @content_added = true
       end
       
       # Enables re-opening content and adding new shapes

@@ -9,7 +9,7 @@
 
 ## Resources
 
-- [Code Master Blog](https://andymaleh.blogspot.com/search/label/LibUI)
+- [Code Master Blog](https://andymaleh.blogspot.com/search/label/glimmer)
 
 ## Help
 

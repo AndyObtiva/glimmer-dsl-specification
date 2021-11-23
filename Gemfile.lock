@@ -10,6 +10,7 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     array_include_methods (1.4.0)
+    awesome_print (1.9.2)
     builder (3.2.4)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -69,6 +70,8 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
     public_suffix (4.0.6)
+    puts_debuggerer (0.13.1)
+      awesome_print (~> 1.9.2)
     racc (1.6.0)
     rack (2.2.3)
     rake (13.0.6)
@@ -85,6 +88,7 @@ DEPENDENCIES
   glimmer (~> 2.5.1)
   glimmer-dsl-specification!
   juwelier (~> 2.1.0)
+  puts_debuggerer (~> 0.13.1)
 
 BUNDLED WITH
    2.2.31

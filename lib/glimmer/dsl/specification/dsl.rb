@@ -7,6 +7,7 @@ module Glimmer
       Engine.add_dynamic_expressions(
         Specification,
         %w[
+          block_method
           attribute
           element
         ]

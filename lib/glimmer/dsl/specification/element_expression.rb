@@ -15,12 +15,13 @@ module Glimmer
         end
         
         def interpret(parent, keyword, *args, &block)
-          Glimmer::Specification::Element.element_class(keyword).new(parent, keyword, *args, &block)
+          Glimmer::Specification::Element.element_class(keyword).new(parent, keyword, *args, &block) unless parent&.content_added?
         end
         
         def add_content(element, keyword, *args, &block)
-          super
+          result = super unless element.executable? && !element.content_added?
           element.post_add_content
+          result
         end
       end
     end
