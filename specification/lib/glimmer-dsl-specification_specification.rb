@@ -38,8 +38,7 @@ module Glimmer::Specification
         person = Person.new(first_name: 'Bob', last_name: 'Winfrey')
 
         fact { person.first_name == 'Bob' }
-        fact { person.last_name == 'Baxter' }
-        fact { person.last_name != 'Winfrey' }
+        fact { person.last_name == 'Winfrey' }
         person.name == 'Bob Winfrey'
       end
     }
