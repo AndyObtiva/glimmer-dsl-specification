@@ -3,6 +3,8 @@
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-specification.svg)](http://badge.fury.io/rb/glimmer-dsl-specification)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+**Update 2021-11-24: This has been a great experiment, but [Dave Aronson](https://www.linkedin.com/in/davearonson) just [reminded me](https://www.linkedin.com/feed/update/urn:li:activity:6868737458729824257) that although [RSpec](https://github.com/rspec/rspec-metagem) switched to imperative `expect` syntax (sacrificing their initial expressiveness for "techincal" reasons), [Minitest](https://github.com/seattlerb/minitest) brought declarative syntax back with Minitest Expectations (e.g. `_(a).must_equal b`) and kept as an available option, so I will simply leave [RSpec](https://github.com/rspec/rspec-metagem) to [Minitest](https://github.com/seattlerb/minitest) to address my personal concerns. If there is any reason to revive this project in the future, you will learn about it in commits and releases. Otherwise, thank you for checking this project out and for providing feedback.**
+
 Despite Ruby's highly expressive nature, most testing toolkits written in Ruby are either imperative (e.g. using `assert` or `expect`), thus losing expressiveness and focusing software engineers on the wrong thing, or mix non-Ruby code with Ruby (e.g. `cucumber` & `gherkin`), thus missing out on the simplicity of Ruby.
 
 [Glimmer](https://github.com/AndyObtiva/glimmer) DSL for Specification aims to provide a simple minimalistic and noun-based declarative syntax. No more verbs! It is time to think declaratively not imperatively!
